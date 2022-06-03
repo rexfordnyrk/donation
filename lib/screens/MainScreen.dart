@@ -21,6 +21,7 @@ class MainScreen extends StatelessWidget{
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: const <Widget>[
+            SearchBar(),
           ],
         ),
       ),

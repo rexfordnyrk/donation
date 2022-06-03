@@ -16,7 +16,10 @@ class Donation extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.green,
       ),
-      home: MainScreen(),
+      home: Container(
+        padding: const EdgeInsets.symmetric(horizontal: 20), color: Colors.white,
+        child: MainScreen()
+      ),
     );
   }
 }
