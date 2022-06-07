@@ -12,12 +12,13 @@ class Donation extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Donation',
       theme: ThemeData(
         primarySwatch: Colors.green,
       ),
       home: Container(
-        padding: const EdgeInsets.symmetric(horizontal: 20), color: Colors.white,
+        color: Colors.white,
         child: MainScreen()
       ),
     );
