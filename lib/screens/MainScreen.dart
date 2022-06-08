@@ -1,5 +1,7 @@
 import 'dart:ffi';
 
+import 'package:donation/widgets/category_menu.dart';
+import 'package:donation/widgets/category_menu_item.dart';
 import 'package:donation/widgets/main_donate_card.dart';
 import 'package:donation/widgets/search_bar.dart';
 import 'package:flutter/material.dart';
@@ -37,7 +39,7 @@ class MainScreen extends StatelessWidget {
             const SearchBar(),
             MainDonateCard(),
             Container(
-                margin: const EdgeInsets.symmetric(vertical: 15),
+                margin: const EdgeInsets.only(top: 15),
                 alignment: Alignment.centerLeft,
                 child: const Text("Categories",
                     textAlign: TextAlign.start,
@@ -45,6 +47,12 @@ class MainScreen extends StatelessWidget {
                         fontSize: 19,
                         color: Colors.black,
                         fontWeight: FontWeight.bold))),
+            CategoryMenu(),
+            // CategoryMenuItem(),
+            // CategoryMenuItem(path: "assets/images/ic_edu.png", title: "Education",),
+            // CategoryMenuItem(path: "assets/images/ic_pill.png", title: "Medical",),
+            // // CategoryMenuItem(path: "assets/images/ic_food.png", title: "Food",),
+            // // CategoryMenuItem(path: "assets/images/ic_accommodation.png", title: "Accommodation",),
           ],
         ),
       ),
