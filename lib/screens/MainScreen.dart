@@ -2,6 +2,7 @@ import 'dart:ffi';
 
 import 'package:donation/widgets/category_menu.dart';
 import 'package:donation/widgets/category_menu_item.dart';
+import 'package:donation/widgets/donation_item_card.dart';
 import 'package:donation/widgets/main_donate_card.dart';
 import 'package:donation/widgets/search_bar.dart';
 import 'package:flutter/material.dart';
@@ -32,23 +33,26 @@ class MainScreen extends StatelessWidget {
       ),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 22.0),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          mainAxisSize: MainAxisSize.max,
-          children: <Widget>[
-            const SearchBar(),
-            MainDonateCard(),
-            Container(
-                margin: const EdgeInsets.only(top: 15),
-                alignment: Alignment.centerLeft,
-                child: const Text("Categories",
-                    textAlign: TextAlign.start,
-                    style: TextStyle(
-                        fontSize: 19,
-                        color: Colors.black,
-                        fontWeight: FontWeight.bold))),
-            CategoryMenu(),
-          ],
+        child: SingleChildScrollView(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            mainAxisSize: MainAxisSize.min,
+            children: <Widget>[
+              const SearchBar(),
+              MainDonateCard(),
+              Container(
+                  margin: const EdgeInsets.only(top: 15),
+                  alignment: Alignment.centerLeft,
+                  child: const Text("Categories",
+                      textAlign: TextAlign.start,
+                      style: TextStyle(
+                          fontSize: 19,
+                          color: Colors.black,
+                          fontWeight: FontWeight.bold))),
+              CategoryMenu(),
+              DonationItemCard(),
+            ],
+          ),
         ),
       ),
       bottomNavigationBar: BottomNavigationBar(
