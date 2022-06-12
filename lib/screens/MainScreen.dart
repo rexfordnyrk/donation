@@ -48,13 +48,34 @@ class MainScreen extends StatelessWidget {
                         color: Colors.black,
                         fontWeight: FontWeight.bold))),
             CategoryMenu(),
-            // CategoryMenuItem(),
-            // CategoryMenuItem(path: "assets/images/ic_edu.png", title: "Education",),
-            // CategoryMenuItem(path: "assets/images/ic_pill.png", title: "Medical",),
-            // // CategoryMenuItem(path: "assets/images/ic_food.png", title: "Food",),
-            // // CategoryMenuItem(path: "assets/images/ic_accommodation.png", title: "Accommodation",),
           ],
         ),
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        showSelectedLabels: false,
+        showUnselectedLabels: false,
+        iconSize: 30,
+        onTap: (int){},
+        currentIndex: 0,
+        type: BottomNavigationBarType.fixed,
+        items: const <BottomNavigationBarItem>[
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home),
+            label: 'kk',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.featured_video),
+            label: 'Camera',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.equalizer_rounded),
+            label: 'Chats',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.manage_accounts),
+            label: 'Account',
+          ),
+        ],
       ),
     );
   }
