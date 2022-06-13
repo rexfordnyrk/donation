@@ -4,7 +4,6 @@ class MainDonateCard extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
     return Card(
-      margin: const EdgeInsets.symmetric(vertical: 8),
       elevation: 20,
       shadowColor: Colors.black.withOpacity(0.6),
       child: Container(

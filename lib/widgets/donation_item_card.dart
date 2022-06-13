@@ -16,11 +16,13 @@ class DonationItemCard extends StatelessWidget{
           children: [
             Container(
               width: MediaQuery.of(context).size.width / 3,
-              margin: EdgeInsets.only(right: 10),
-              // height: double.maxFinite,
-              child: Image.asset(
-                "assets/images/student_bag.jpg",
-                fit: BoxFit.fitWidth,
+              margin: const EdgeInsets.only(right: 10),
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(5),
+                child: Image.asset(
+                  "assets/images/student_bag.jpg",
+                  fit: BoxFit.fitWidth,
+                ),
               ),
             ),
             Flexible(

@@ -31,7 +31,7 @@ class MainScreen extends StatelessWidget {
         ],
         elevation: 0,
       ),
-      body: Padding(
+      body: Container(
         padding: const EdgeInsets.symmetric(horizontal: 22.0),
         child: SingleChildScrollView(
           child: Column(
