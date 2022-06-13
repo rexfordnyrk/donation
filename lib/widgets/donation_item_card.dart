@@ -15,7 +15,7 @@ class DonationItemCard extends StatelessWidget{
         child: Row(
           children: [
             Container(
-              width: MediaQuery.of(context).size.width / 3,
+              width: MediaQuery.of(context).size.width / 4,
               margin: const EdgeInsets.only(right: 10),
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(5),
