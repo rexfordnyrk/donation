@@ -1,28 +1,25 @@
 import 'dart:ffi';
 
+import 'package:donation/screens/DonateScreen.dart';
 import 'package:donation/widgets/detail_progress_card.dart';
 import 'package:donation/widgets/main_details.dart';
 import 'package:donation/widgets/organiser.dart';
 import 'package:flutter/material.dart';
 
+import '../widgets/back_button.dart';
+
 class DetailsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       appBar: AppBar(
-        leading: const Padding(
-          padding: EdgeInsets.symmetric(horizontal: 20),
-          child: Icon(
-            Icons.arrow_back,
-            size: 25,
-            color: Colors.black,
-          ),
-        ),
+        leading: CustomBackButton(),
         title: const Align(
           child: Text("Details",
               textAlign: TextAlign.center,
               style:
-              TextStyle(color: Colors.black, fontWeight: FontWeight.bold)),
+                  TextStyle(color: Colors.black, fontWeight: FontWeight.bold)),
         ),
         backgroundColor: Colors.white,
         actions: const [
@@ -58,16 +55,21 @@ class DetailsScreen extends StatelessWidget {
                           fontWeight: FontWeight.bold))),
               Organizer(),
               MaterialButton(
-                onPressed: (){},
+                onPressed: () {
+                  Navigator.of(context).push(
+                      MaterialPageRoute(builder: (context) => DonateScreen()));
+                },
                 elevation: 2,
                 minWidth: double.maxFinite,
                 color: Colors.green,
                 child: const Padding(
                   padding: EdgeInsets.all(18.0),
-                  child: Text("Donate Now", style: TextStyle(color: Colors.white),),
+                  child: Text(
+                    "Donate Now",
+                    style: TextStyle(color: Colors.white),
+                  ),
                 ),
               )
-              // DonationItemCard(),
             ],
           ),
         ),

@@ -19,9 +19,8 @@ class Donation extends StatelessWidget {
       ),
       home: Container(
         color: Colors.white,
-        child: MainScreen()
+        child: MainScreen(),
       ),
     );
   }
 }
-

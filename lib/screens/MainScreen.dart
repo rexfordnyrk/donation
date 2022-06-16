@@ -1,7 +1,4 @@
-import 'dart:ffi';
-
 import 'package:donation/widgets/category_menu.dart';
-import 'package:donation/widgets/category_menu_item.dart';
 import 'package:donation/widgets/donation_item_card.dart';
 import 'package:donation/widgets/main_donate_card.dart';
 import 'package:donation/widgets/search_bar.dart';
@@ -11,21 +8,26 @@ class MainScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       appBar: AppBar(
         title: const Padding(
           padding: EdgeInsets.symmetric(horizontal: 5),
-          child: Text("Rexford.",
-              style:
-                  TextStyle(color: Colors.black, fontWeight: FontWeight.bold)),
+          child: Text(
+            "Rexford.",
+            style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
+          ),
         ),
         backgroundColor: Colors.white,
-        actions: const [
+        actions: [
           Padding(
-            padding: EdgeInsets.symmetric(horizontal: 15),
-            child: Icon(
-              Icons.notifications,
-              size: 25,
-              color: Colors.blueGrey,
+            padding: const EdgeInsets.symmetric(horizontal: 5),
+            child: IconButton(
+              icon: const Icon(
+                Icons.notifications,
+                size: 25,
+                color: Colors.blueGrey,
+              ),
+              onPressed: () {},
             ),
           )
         ],
@@ -59,7 +61,7 @@ class MainScreen extends StatelessWidget {
         showSelectedLabels: false,
         showUnselectedLabels: false,
         iconSize: 30,
-        onTap: (int){},
+        onTap: (int) {},
         currentIndex: 0,
         type: BottomNavigationBarType.fixed,
         items: const <BottomNavigationBarItem>[
