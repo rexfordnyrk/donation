@@ -19,11 +19,13 @@ class DonateScreen extends StatelessWidget {
           child: Text("Donate",
               textAlign: TextAlign.center,
               style:
-              TextStyle(color: Colors.black, fontWeight: FontWeight.bold)),
+                  TextStyle(color: Colors.black, fontWeight: FontWeight.bold)),
         ),
         backgroundColor: Colors.white,
         actions: const [
-          SizedBox(width: 55,),
+          SizedBox(
+            width: 55,
+          ),
         ],
         elevation: 0,
       ),
@@ -32,7 +34,7 @@ class DonateScreen extends StatelessWidget {
         margin: const EdgeInsets.only(left: 26.0, right: 26.0, top: 15),
         color: Colors.transparent,
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
           mainAxisSize: MainAxisSize.max,
           children: <Widget>[
             PreviewTitleCard(),
@@ -44,121 +46,132 @@ class DonateScreen extends StatelessWidget {
                     style: TextStyle(
                         fontSize: 19,
                         color: Colors.black,
-                        fontWeight: FontWeight.bold
-                    )
-                )
-            ),
+                        fontWeight: FontWeight.bold))),
             GridView(
               gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 2,
-                childAspectRatio: 5/4,
-                crossAxisSpacing: 10,
-                mainAxisSpacing: 10
-              ),
+                  crossAxisCount: 2,
+                  childAspectRatio: 5 / 4,
+                  crossAxisSpacing: 10,
+                  mainAxisSpacing: 10),
               shrinkWrap: true,
-              children:  [
+              children: [
                 Container(
-                  margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 5),
+                  margin:
+                      const EdgeInsets.symmetric(vertical: 10, horizontal: 5),
                   decoration: BoxDecoration(
-                    border: selected == 1 ? null: Border.all(color: Colors.grey.shade300, width: 2),
+                    border: selected == 1
+                        ? null
+                        : Border.all(color: Colors.grey.shade300, width: 2),
                     borderRadius: BorderRadius.circular(2),
                     color: selected == 1 ? Colors.white : Colors.transparent,
-                    boxShadow: selected == 1 ? [
-                      BoxShadow(
-                        color: Colors.black.withOpacity(0.1),
-                        spreadRadius: 1,
-                        blurRadius: 10,
-                        offset: Offset(0, 10), // changes position of shadow
-                      ),
-                    ] : [],
+                    boxShadow: selected == 1
+                        ? [
+                            BoxShadow(
+                              color: Colors.black.withOpacity(0.1),
+                              spreadRadius: 1,
+                              blurRadius: 10,
+                              offset:
+                                  Offset(0, 10), // changes position of shadow
+                            ),
+                          ]
+                        : [],
                   ),
                   child: const Align(
                     child: Text(
                       "\$50",
-                      style: TextStyle(
-                          fontSize: 35,
-                          fontWeight: FontWeight.w500
-                      ),
+                      style:
+                          TextStyle(fontSize: 35, fontWeight: FontWeight.w500),
                     ),
                   ),
                 ),
                 Container(
-                  margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 5),
+                  margin:
+                      const EdgeInsets.symmetric(vertical: 10, horizontal: 5),
                   decoration: BoxDecoration(
-                    border: selected == 2 ? null: Border.all(color: Colors.grey.shade300,width: 2),
+                    border: selected == 2
+                        ? null
+                        : Border.all(color: Colors.grey.shade300, width: 2),
                     borderRadius: BorderRadius.circular(2),
                     color: selected == 2 ? Colors.white : Colors.transparent,
-                    boxShadow: selected == 2 ? [
-                      BoxShadow(
-                        color: Colors.black.withOpacity(0.1),
-                        spreadRadius: 1,
-                        blurRadius: 10,
-                        offset: Offset(0, 10), // changes position of shadow
-                      ),
-                    ] : [],
+                    boxShadow: selected == 2
+                        ? [
+                            BoxShadow(
+                              color: Colors.black.withOpacity(0.1),
+                              spreadRadius: 1,
+                              blurRadius: 10,
+                              offset:
+                                  Offset(0, 10), // changes position of shadow
+                            ),
+                          ]
+                        : [],
                   ),
                   child: const Align(
                     child: Text(
                       "\$100",
-                      style: TextStyle(
-                          fontSize: 35,
-                          fontWeight: FontWeight.w500
-                      ),
+                      style:
+                          TextStyle(fontSize: 35, fontWeight: FontWeight.w500),
                     ),
                   ),
                 ),
                 Container(
-                  margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 5),
+                  margin:
+                      const EdgeInsets.symmetric(vertical: 10, horizontal: 5),
                   decoration: BoxDecoration(
-                    border: selected == 3 ? null: Border.all(color: Colors.grey.shade300,width: 2),
+                    border: selected == 3
+                        ? null
+                        : Border.all(color: Colors.grey.shade300, width: 2),
                     borderRadius: BorderRadius.circular(2),
                     color: selected == 3 ? Colors.white : Colors.transparent,
-                    boxShadow: selected == 3 ? [
-                      BoxShadow(
-                        color: Colors.black.withOpacity(0.1),
-                        spreadRadius: 1,
-                        blurRadius: 10,
-                        offset: Offset(0, 10), // changes position of shadow
-                      ),
-                    ] : [],
+                    boxShadow: selected == 3
+                        ? [
+                            BoxShadow(
+                              color: Colors.black.withOpacity(0.1),
+                              spreadRadius: 1,
+                              blurRadius: 10,
+                              offset:
+                                  Offset(0, 10), // changes position of shadow
+                            ),
+                          ]
+                        : [],
                   ),
                   child: const Align(
                     child: Text(
                       "\$200",
-                      style: TextStyle(
-                          fontSize: 35,
-                          fontWeight: FontWeight.w500
-                      ),
+                      style:
+                          TextStyle(fontSize: 35, fontWeight: FontWeight.w500),
                     ),
                   ),
                 ),
                 Container(
-                  margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 5),
+                  margin:
+                      const EdgeInsets.symmetric(vertical: 10, horizontal: 5),
                   decoration: BoxDecoration(
-                    border: selected == 4 ? null: Border.all(color: Colors.grey.shade300,width: 2),
+                    border: selected == 4
+                        ? null
+                        : Border.all(color: Colors.grey.shade300, width: 2),
                     borderRadius: BorderRadius.circular(2),
                     color: selected == 4 ? Colors.white : Colors.transparent,
-                    boxShadow: selected == 4 ? [
-                      BoxShadow(
-                        color: Colors.black.withOpacity(0.1),
-                        spreadRadius: 1,
-                        blurRadius: 10,
-                        offset: Offset(0, 10), // changes position of shadow
-                      ),
-                    ] : [],
+                    boxShadow: selected == 4
+                        ? [
+                            BoxShadow(
+                              color: Colors.black.withOpacity(0.1),
+                              spreadRadius: 1,
+                              blurRadius: 10,
+                              offset:
+                                  Offset(0, 10), // changes position of shadow
+                            ),
+                          ]
+                        : [],
                   ),
                   child: const Align(
                     child: Text(
                       "\$250",
-                      style: TextStyle(
-                          fontSize: 35,
-                          fontWeight: FontWeight.w500
-                      ),
+                      style:
+                          TextStyle(fontSize: 35, fontWeight: FontWeight.w500),
                     ),
                   ),
                 ),
               ],
-
             ),
             Row(
               mainAxisSize: MainAxisSize.max,
@@ -173,10 +186,7 @@ class DonateScreen extends StatelessWidget {
                 ),
                 Padding(
                   padding: EdgeInsets.all(8.0),
-                  child: Align(
-                    alignment: Alignment.center,
-                    child: Text("or")
-                  ),
+                  child: Align(alignment: Alignment.center, child: Text("or")),
                 ),
                 Flexible(
                   child: Divider(
@@ -189,38 +199,46 @@ class DonateScreen extends StatelessWidget {
             TextField(
               decoration: InputDecoration(
                 hintText: 'Enter Price Manually',
-                hintStyle: TextStyle(color: Colors.black.withOpacity(0.5), fontSize: 17),
+                hintStyle: TextStyle(
+                    color: Colors.black.withOpacity(0.5), fontSize: 14),
                 border: const OutlineInputBorder(
-                  borderRadius: BorderRadius.all(Radius.circular(8.0)),
-                  borderSide: BorderSide.none
-                ),
-                contentPadding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                    borderRadius: BorderRadius.all(Radius.circular(8.0)),
+                    borderSide: BorderSide.none),
+                contentPadding:
+                    const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
                 fillColor: Colors.grey.shade200,
                 filled: true,
               ),
               cursorColor: Colors.grey,
-              style: TextStyle(color: Colors.black.withOpacity(0.5), fontSize: 17, ),
+              style: TextStyle(
+                color: Colors.black.withOpacity(0.5),
+                fontSize: 17,
+              ),
+              textAlign: TextAlign.center,
             ),
+/*
             Container(
                 margin: const EdgeInsets.only(top: 15),
                 alignment: Alignment.centerLeft,
                 child: const Text("Select Payment",
                     textAlign: TextAlign.start,
                     style: TextStyle(
-                        fontSize: 19,
-                        color: Colors.black,
-                        fontWeight: FontWeight.bold,
-                    )
-                )
-            ),
+                      fontSize: 19,
+                      color: Colors.black,
+                      fontWeight: FontWeight.bold,
+                    ))),
+*/
             MaterialButton(
-              onPressed: (){},
+              onPressed: () {},
               elevation: 2,
               minWidth: double.maxFinite,
               color: Colors.green,
               child: const Padding(
                 padding: EdgeInsets.all(18.0),
-                child: Text("Pay & Confirm", style: TextStyle(color: Colors.white),),
+                child: Text(
+                  "Pay & Confirm",
+                  style: TextStyle(color: Colors.white),
+                ),
               ),
             )
             // DonationItemCard(),
