@@ -1,5 +1,8 @@
+import 'dart:convert';
 import 'dart:ffi';
 
+import 'package:donation/payment/rapyd.dart';
+import 'package:donation/screens/CheckoutScreen.dart';
 import 'package:donation/widgets/amounts_grid_card.dart';
 import 'package:donation/widgets/back_button.dart';
 import 'package:donation/widgets/donate_preview_title_card.dart';
@@ -15,7 +18,7 @@ class DonateScreen extends StatefulWidget {
 
 class _DonateScreenState extends State {
   int selected = 1;
-  int selectedAmount = 50;
+  double selectedAmount = 50.0;
   TextEditingController controller = TextEditingController();
 
   @override
@@ -115,7 +118,9 @@ class _DonateScreenState extends State {
               Padding(
                 padding: const EdgeInsets.symmetric(vertical: 10.0),
                 child: MaterialButton(
-                  onPressed: () => proceed(),
+                  onPressed: () {
+                    proceed(context);
+                  },
                   elevation: 2,
                   minWidth: double.maxFinite,
                   color: Colors.green,
@@ -136,7 +141,8 @@ class _DonateScreenState extends State {
     );
   }
 
-  void selectAmount(int cardNo, int amount) {
+  //setting value of item and amount selected
+  void selectAmount(int cardNo, double amount) {
     setState(() {
       selected = cardNo;
       selectedAmount = amount;
@@ -144,10 +150,12 @@ class _DonateScreenState extends State {
     });
   }
 
-  void proceed() {
+  void proceed(context) {
     if (selected == 0) {
-      selectedAmount = int.parse(controller.text);
+      selectedAmount = double.parse(controller.text);
     }
-    // print("the value  $selectedAmount");
+    Rapyd rapyd = Rapyd(selectedAmount);
+    Navigator.push(context,
+        MaterialPageRoute(builder: (context) => CheckOutScreen(rapyd: rapyd)));
   }
 }
