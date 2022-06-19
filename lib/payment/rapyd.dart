@@ -1,66 +1,73 @@
 import 'dart:convert';
-import 'dart:ffi';
 import 'dart:math';
+import 'package:convert/convert.dart';
+import 'package:http/http.dart' as http;
 
 import 'package:crypto/crypto.dart';
 
 class Rapyd {
-  //Declaring variables for
-
-  final String _ACCESS_KEY = "";
-  final String _SECRET_KEY = "";
-  final String _DESTINATION_WALLET = "";
+  //Declaring variables
+  final String _ACCESS_KEY = "YOUR-ACCESS-KEY";
+  final String _SECRET_KEY = "YOUR-SECRET-KEY";
   final String _BASEURL = "https://sandboxapi.rapyd.net";
-  final Float amount;
+  final double amount;
 
   Rapyd(this.amount);
 
   //Generating random string for each request with specific length as salt
-  String getRandString(int len) {
+  String _getRandString(int len) {
     var values = List<int>.generate(len, (i) => Random.secure().nextInt(256));
     return base64Url.encode(values);
   }
 
-  //1. Generating Signature
-  String _getSignature(
-      String http_method, url_path, salt, timestamp, body_string) {
-    body_string.toString().isNotEmpty
-        ? body_string = jsonEncode(body_string)
-        : "";
-
-    String sigString = http_method +
-        url_path +
-        salt +
-        timestamp +
-        _ACCESS_KEY +
-        _SECRET_KEY +
-        body_string;
-
-    Hmac hmac = Hmac(sha256, utf8.encode(_SECRET_KEY));
-    Digest digest = hmac.convert(utf8.encode(sigString));
-
-    return base64.encode(digest.bytes);
-  }
-
-  //3. Generating body
-  Map<String, String> _getBody(Float amount) {
+  //1. Generating body
+  Map<String, String> _getBody() {
     return <String, String>{
       "amount": amount.toString(),
       "currency": "USD",
       "country": "US",
-      "ewallet": _DESTINATION_WALLET,
     };
   }
 
-  //2. Generating Headers
-  Map<String, String> _getHeaders() {
-    String salt = getRandString(16);
+  //2. Generating Signature
+  String _getSignature(String httpMethod, String urlPath, String salt,
+      String timestamp, String bodyString) {
+    //if body is not empty json encode it other wise leave as empty string
+    // bodyString.toString().isNotEmpty ? bodyString = jsonEncode(bodyString) : "";
+
+    //concatenating string values together before hashing string according to Rapyd documentation
+    String sigString = httpMethod +
+        urlPath +
+        salt +
+        timestamp +
+        _ACCESS_KEY +
+        _SECRET_KEY +
+        bodyString;
+
+    //passing the concatenated string through HMAC with the SHA256 algorithm
+    Hmac hmac = Hmac(sha256, utf8.encode(_SECRET_KEY));
+    Digest digest = hmac.convert(utf8.encode(sigString));
+    var ss = hex.encode(digest.bytes);
+
+    //base64 encoding the results and returning it.
+    return base64UrlEncode(ss.codeUnits);
+  }
+
+  //3. Generating Headers
+  Map<String, String> _getHeaders(String urlEndpoint, {String body = ""}) {
+    //generate a random string of length 16
+    String salt = _getRandString(16);
+
+    //calculating the unix timestamp in seconds
     String timestamp = (DateTime.now().toUtc().millisecondsSinceEpoch / 1000)
         .round()
         .toString();
-    String signature = _getSignature(
-        "post", "/v1/checkout", salt, timestamp, _getBody(amount));
 
+    //generating the signature for the request according to the docs
+    String signature =
+        _getSignature("post", urlEndpoint, salt, timestamp, body);
+
+    //Returning a map containing the headers and generated values
     return <String, String>{
       "access_key": _ACCESS_KEY,
       "signature": signature,
@@ -70,5 +77,16 @@ class Rapyd {
     };
   }
 
-  //4.
+  //4. making post request
+  Future<http.Response> createCheckoutPage() async {
+    final responseURL = Uri.parse("$_BASEURL/v1/checkout");
+    final String body = jsonEncode(_getBody());
+    var response = await http.post(
+      responseURL,
+      headers: _getHeaders("/v1/checkout", body: body),
+      body: body,
+    );
+
+    return response;
+  }
 }
