@@ -78,15 +78,24 @@ class Rapyd {
   }
 
   //4. making post request
-  Future<http.Response> createCheckoutPage() async {
+  Future<Map> createCheckoutPage() async {
     final responseURL = Uri.parse("$_BASEURL/v1/checkout");
     final String body = jsonEncode(_getBody());
+
+    //making post request with headers and body.
     var response = await http.post(
       responseURL,
       headers: _getHeaders("/v1/checkout", body: body),
       body: body,
     );
 
-    return response;
+    Map repBody = jsonDecode(response.body) as Map;
+    //return data if request was successful
+    if (response.statusCode == 200) {
+      return repBody["data"] as Map;
+    }
+
+    //throw error if request was unsuccessful
+    throw repBody["status"] as Map;
   }
 }
