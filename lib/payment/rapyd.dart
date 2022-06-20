@@ -6,7 +6,7 @@ import 'package:http/http.dart' as http;
 import 'package:crypto/crypto.dart';
 
 class Rapyd {
-  //Declaring variables
+  // Declaring variables
   final String _ACCESS_KEY = "YOUR-ACCESS-KEY";
   final String _SECRET_KEY = "YOUR-SECRET-KEY";
   final String _BASEURL = "https://sandboxapi.rapyd.net";
@@ -26,15 +26,14 @@ class Rapyd {
       "amount": amount.toString(),
       "currency": "USD",
       "country": "US",
+      "complete_checkout_url": "https://www.rapyd.net/cancel",
+      "cancel_checkout_url": "https://www.rapyd.net/cancel"
     };
   }
 
   //2. Generating Signature
   String _getSignature(String httpMethod, String urlPath, String salt,
       String timestamp, String bodyString) {
-    //if body is not empty json encode it other wise leave as empty string
-    // bodyString.toString().isNotEmpty ? bodyString = jsonEncode(bodyString) : "";
-
     //concatenating string values together before hashing string according to Rapyd documentation
     String sigString = httpMethod +
         urlPath +
