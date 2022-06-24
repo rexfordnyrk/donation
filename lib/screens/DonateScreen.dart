@@ -15,7 +15,7 @@ class DonateScreen extends StatefulWidget {
 
 class _DonateScreenState extends State {
   int selected = 1;
-  int selectedAmount = 50;
+  double selectedAmount = 50.0;
   TextEditingController controller = TextEditingController();
 
   @override
@@ -136,7 +136,8 @@ class _DonateScreenState extends State {
     );
   }
 
-  void selectAmount(int cardNo, int amount) {
+  //setting value of item and amount selected
+  void selectAmount(int cardNo, double amount) {
     setState(() {
       selected = cardNo;
       selectedAmount = amount;
@@ -146,7 +147,7 @@ class _DonateScreenState extends State {
 
   void proceed() {
     if (selected == 0) {
-      selectedAmount = int.parse(controller.text);
+      selectedAmount = double.parse(controller.text);
     }
     // print("the value  $selectedAmount");
   }
